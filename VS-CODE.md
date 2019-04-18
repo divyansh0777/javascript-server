@@ -1,4 +1,4 @@
-#Features of VS code
+**Features of VS code**
 - It is available for mac OS, Linux as well as in windows also.
 - 2It is a fast source code and support nearly 100 of languages.,
 - It uses powerfull developer toolin g linke IntelliSense.
@@ -6,7 +6,7 @@
 - VS Code has also support for Git so you can work with source control without 
 leaving the editor including viewing pending changes.
 
-#Plugins used in VS-CODE editor
+**Plugins used in VS-CODE editor**
 
 - HTML'
 - 'CSS' 
