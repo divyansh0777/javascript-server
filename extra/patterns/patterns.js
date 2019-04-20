@@ -1,28 +1,28 @@
 let a = process.argv[2];
 
 let diamond = (value) => {
-  for (let i=1; i<=value; i++) {
+  for (let i = 1; i <= value; i++) {
     let result = "";
 
-    for ( let j=1; j<=value-i; j++) {
+    for (let j = 1; j <= value-i; j++) {
       result = result + " ";
     }
       
-    for (let k=1; k<=i; k++) {
+    for (let k = 1; k <= i; k++) {
       result = result + "* ";
     }
      
     console.log(result);
   }
 
-  for (let i=value; i>=1; i--) {
+  for (let i = value; i >= 1; i--) {
     let res = "";
 
-    for (let j=1; j<=value-i; j++) {
+    for (let j = 1; j <= value-i; j++) {
       res = res + " ";
     }
 
-    for (let k=1; k<=i; k++) {
+    for (let k = 1; k <= i; k++) {
       res = res + "* ";
     }
       
