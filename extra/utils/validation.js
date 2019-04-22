@@ -1,3 +1,6 @@
+let right = 0;
+let wrong = 0;
+
 const users = [     
   {
     traineeEmail: 'trainee2@successive.tech@.tech', //FALSE
@@ -27,13 +30,29 @@ let validateEmail = (trainee , reviewer) => {
   console.log(pattern.test(reviewer));
 }
 
+let count = (trainee, reviewer) => {
+  if(pattern.test(trainee))
+    right++
+  else
+    wrong++
+
+  if(pattern.test(reviewer)==true)
+    right++
+  else
+    wrong++
+}
+
+
 //Validating users 
 let validateUsers = (users) => {
   console.log(users);
   users.forEach((key) => {
     console.log(key);
     validateEmail(key.traineeEmail, key.reviewerEmail);
+    count(key.traineeEmail, key.reviewerEmail);
   })
 }
 
 validateUsers(users);
+console.log('Valid = '+right);
+console.log('Invalid = '+wrong);
