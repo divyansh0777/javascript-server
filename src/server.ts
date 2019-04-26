@@ -2,6 +2,7 @@ import * as express from 'express';
 import * as initBodyParser from 'body-parser';
 import { default as notFoundRoutes } from './config/libs/routes/notFoundRoutes'
 import { default as errorHandler } from './config/libs/routes/errorHandler'
+import {routes} from './routes'
 export class Server {
   private app = express();
   private PORT;
@@ -14,8 +15,6 @@ export class Server {
     this.NODE_ENV = con.node_env;
   }
 
-
-
   public bootstrap = () => {
     this.setupRoutes();
     this.initBodyParser();
@@ -23,8 +22,6 @@ export class Server {
   }
 
   public setupRoutes = () => {
-
-
     this.app.get('/', (request, response) => {
       response.send("Hello welcome to Successive");
     })
