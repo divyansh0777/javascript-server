@@ -18,33 +18,41 @@ export class Server {
 
   public bootstrap = () => {
     this.setupRoutes();
-    // this.initBodyParser();
+    this.initBodyParser();
     return this;
   }
 
   public setupRoutes = () => {
-    this.app.use(this.app.setupRoutes;
 
-    this.app.use(function (request, response, next) {
-        response.send(404, "Sry Not Found");
-    })
-    this.app.get('/health-check', (request, response) => {
-      response.send("I am ok");
-
-    })
 
     this.app.get('/', (request, response) => {
       response.send("Hello welcome to Successive");
     })
 
+    this.app.get('/health-check', (request, response) => {
+      response.send("I am ok");
+    })
+
+    this.app.post('/postTest', (request, response) => {
+      response.send('this is post request');
+    })
+
+    this.app.get('/errorTest', (request, response, next) => {
+      throw new Error('This is an error');
+    })
+
+    this.app.use(notFoundRoutes);
+    this.app.use(errorHandler);
+
+
     return this;
   }
 
-  // public initBodyParser = () => {
-  //   this.app.use(this.bodyParser.text({ type: 'text/html' }));
-  //   this.app.use(this.bodyParser.urlencoded({ extended: false }))
-  //   this.app.initBodyParser
-  // }
+  public initBodyParser = () => {
+    this.app.use(this.bodyParser.text({ type: 'text/html' }));
+    this.app.use(this.bodyParser.urlencoded({ extended: false }))
+    // this.app.initBodyParser
+  }
 
   public run = () => {
     this.app.listen(this.PORT, () => {
