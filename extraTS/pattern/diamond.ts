@@ -1,5 +1,5 @@
-import { diamondInterface} from '../interfaces'
-let diamond: diamondInterface;
+import { IdiamondInterface} from '../interfaces'
+let diamond: IdiamondInterface;
 
 diamond = (value) => {
   for (let i = 1; i <= value ; i++) {

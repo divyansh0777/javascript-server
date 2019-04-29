@@ -1,5 +1,5 @@
-import { eqTriangleInterface } from '../interfaces'
-let eT : eqTriangleInterface;
+import { IeqTriangleInterface } from '../interfaces'
+let eT : IeqTriangleInterface;
 
 eT = (value: number) => {
   for (let i = 1; i <= value; i++) {
