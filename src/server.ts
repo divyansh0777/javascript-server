@@ -1,12 +1,12 @@
 import * as express from 'express';
-import * as initBodyParser from 'body-parser';
 import { default as notFoundRoutes } from './config/libs/routes/notFoundRoutes'
 import { default as errorHandler } from './config/libs/routes/errorHandler'
-import {routes} from './routes'
+import { traineeRouter } from './routes'
 export class Server {
   private app = express();
   private PORT;
   private NODE_ENV;
+
 
   public bodyParser = require('body-parser');
 
@@ -14,6 +14,8 @@ export class Server {
     this.PORT = con.port;
     this.NODE_ENV = con.node_env;
   }
+
+
 
   public bootstrap = () => {
     this.setupRoutes();
@@ -38,9 +40,13 @@ export class Server {
       throw new Error('This is an error');
     })
 
-    this.app.use(notFoundRoutes);
-    this.app.use(errorHandler);
+    this.app.get('/api', (request, response) => {
+      response.send("You have two modules trainee and user")
+    })
 
+    this.app.use('/api', traineeRouter);
+    this.app.use(errorHandler);
+    this.app.use(notFoundRoutes);
 
     return this;
   }
