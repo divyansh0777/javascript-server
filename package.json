@@ -48,6 +48,7 @@
     "hooks": {
       "compile": "npm run compile",
       "pre-compile": "npm run tslint",
+      "pre-push": "npm run tslint fix",
       "commit": "npm run commitizen"
     }
   }
