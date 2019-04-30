@@ -18,8 +18,8 @@ export class Server {
 
 
   public bootstrap = () => {
-    this.setupRoutes();
     this.initBodyParser();
+    this.setupRoutes();
     return this;
   }
 
@@ -41,7 +41,7 @@ export class Server {
     })
 
     this.app.get('/api', (request, response) => {
-      response.send("You have two modules trainee and user")
+      response.send("You have two modules trainee and user");
     })
 
     this.app.use('/api', traineeRouter);

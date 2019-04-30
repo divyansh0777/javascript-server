@@ -1,14 +1,26 @@
+import { validationResult } from "express-validator/check";
+
 class controller {
-  static getRequest(request, response) {
+  public getRequest(request, response) {
     response.send("This is a Get request inside from trainee Controller")
   }
 
-  static putRequest(request, response){
+  public putRequest(request, response){
     response.send("This is a PUT request");
   }
 
-  static deleteRequest(request, response){
+  public deleteRequest(request, response){
     response.send("This is a DELETE request");
   }
+
+  public postDataCheck(request, response, next){
+    const errors = validationResult(request);
+
+    if (!errors.isEmpty()) {
+      return response.status(422).json({errors: errors.array()});
+    }
+    return response.status(200).json({"data": request.body });
+  }
+
 }
- export default controller
+ export default new controller()
