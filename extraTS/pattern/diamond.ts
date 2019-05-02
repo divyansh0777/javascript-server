@@ -1,5 +1,6 @@
-import { IdiamondInterface} from '../interfaces'
-let diamond: IdiamondInterface;
+import { IDiamond } from '../interfaces'
+
+let diamond: IDiamond;
 
 diamond = (value) => {
   for (let i = 1; i <= value ; i++) {
@@ -31,4 +32,4 @@ diamond = (value) => {
   }
 }
 
-export {diamond};
+export { diamond };

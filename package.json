@@ -46,8 +46,8 @@
 
   "husky": {
     "hooks": {
-      "compile": "npm run compile",
-      "commit": "npm run commitizen"
+      "pre-push": "npm run compile",
+      "pre-commit": "npm run tslint"
     }
   }
 }
