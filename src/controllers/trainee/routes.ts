@@ -1,6 +1,7 @@
 import * as express from 'express'
-import { default as traineeController } from './controllers'
+import traineeController from './controllers'
 
+Object.freeze(traineeController);
 const traineeRouter = express.Router();
 
 traineeRouter.get('/get', traineeController.getRequest);

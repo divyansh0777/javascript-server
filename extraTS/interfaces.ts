@@ -1,14 +1,12 @@
-import * as constants from './constants';
-
-export interface diamondInterface {
+export interface IDiamond {
   (val: number): void;
 }
 
-export interface eqTriangleInterface {
+export interface IEquilateralTriangle {
   (value : number) : void ;
 }
 
-export interface hasPermissionInterface {
+export interface IHasPermission {
   (
     moduleName : string,
     role : string,
@@ -16,7 +14,7 @@ export interface hasPermissionInterface {
   ): boolean;
 }
 
-export interface validateEmailInterface {
+export interface IValidateEmail {
   trainee : string,
   reviewer : string
 }
