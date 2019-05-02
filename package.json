@@ -27,9 +27,15 @@
     "compile": "tsc --project .",
     "execute": "npx babel-node dist",
     "commitizen": "npx git-cz",
+<<<<<<< HEAD
     "tslint": "tslint -c 'extraTS'",
     "tslintfix": "tslint --fix 'extraTS'",
     "src": "tsc-watch --p . --onSuccess \"npm run nodemon\"",
+=======
+    "tslint": "tslint -c 'extraTS",
+    "tslint fix": "tslint --fix 'extraTS",
+    "extraTS": "tsc-watch --p . --onSuccess \"npm run nodemon\"",
+>>>>>>> develop
     "nodemon": "nodemon ./dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -46,8 +52,13 @@
 
   "husky": {
     "hooks": {
+<<<<<<< HEAD
       "pre-push": "npm run tslintfix",
       "pre-commit": "npm run compile"
+=======
+      "compile": "npm run compile",
+      "commit": "npm run commitizen"
+>>>>>>> develop
     }
   }
 }
