@@ -30,6 +30,7 @@
     "tslint": "tslint -c 'extraTS'",
     "tslintfix": "tslint --fix 'extraTS'",
     "extraTS": "tsc-watch --p . --onSuccess \"npm run nodemon\"",
+    "src": "tsc-watch --p . --onSuccess \"npm run nodemon\"",
     "nodemon": "nodemon ./dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
