@@ -1,5 +1,3 @@
-import * as constants from './constants';
-
 export interface IDiamond {
   (val: number): void;
 }

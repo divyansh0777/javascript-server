@@ -1,9 +1,8 @@
 import * as express from 'express';
-export class Server {
+export default class {
   private app = express();
   private PORT;
   private NODE_ENV;
-
 
   constructor(config) {
     this.PORT = config.port;
