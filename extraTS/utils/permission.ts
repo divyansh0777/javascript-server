@@ -1,4 +1,4 @@
-import { hasPermissionInterface } from '../interfaces';
+import { IhasPermissionInterface } from '../interfaces';
 import * as constants from '../constants'
 
 let permission = {
@@ -10,7 +10,7 @@ let permission = {
   }
 }
 
-let hasPermission: hasPermissionInterface;
+let hasPermission: IhasPermissionInterface;
 
 hasPermission = (moduleName, role:String, permissionType:string ) => {
   return permission[moduleName][constants.PERMISSION_ALL].indexOf(role)!==-1 ||

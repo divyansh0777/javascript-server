@@ -1,18 +1,17 @@
-import { IdiamondInterface} from '../interfaces'
-let diamond: IdiamondInterface;
+let a = process.argv[2];
 
-diamond = (value) => {
-  for (let i = 1; i <= value ; i++) {
+let diamond = (value) => {
+  for (let i = 1; i <= value; i++) {
     let result = "";
 
     for (let j = 1; j <= value-i; j++) {
       result = result + " ";
     }
-
+      
     for (let k = 1; k <= i; k++) {
       result = result + "* ";
     }
-
+     
     console.log(result);
   }
 
@@ -26,9 +25,10 @@ diamond = (value) => {
     for (let k = 1; k <= i; k++) {
       res = res + "* ";
     }
-
+      
     console.log(res);
   }
+  
 }
 
-export {diamond};
+diamond (a);

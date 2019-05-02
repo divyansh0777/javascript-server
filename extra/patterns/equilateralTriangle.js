@@ -1,11 +1,10 @@
-import { IeqTriangleInterface } from '../interfaces'
-let eT : IeqTriangleInterface;
+let a = process.argv[2];
 
-eT = (value: number) => {
+let triangle = (value) => {
   for (let i = 1; i <= value; i++) {
     let result = "";
 
-    for (let j = 1; j <= value-i; j++ ) {
+    for (let j = 1; j <=value-i; j++ ) {
       result = result + " ";
     }
 
@@ -17,4 +16,4 @@ eT = (value: number) => {
   }
 }
 
-export {eT};
+triangle (a);

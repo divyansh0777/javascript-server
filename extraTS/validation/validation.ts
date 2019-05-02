@@ -1,5 +1,5 @@
 import * as constants from '../constants';
-import { validateEmailInterface } from '../interfaces';
+import { IvalidateEmailInterface } from '../interfaces';
 
 export function validateUsers (users) {
   console.log(users);
@@ -16,7 +16,7 @@ export function validateUsers (users) {
 
 let pattern = new RegExp (/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/);
 
-function validateEmail (Obj : validateEmailInterface): void {
+function validateEmail (Obj : IvalidateEmailInterface): void {
   console.log(pattern.test(Obj.trainee))
   console.log(pattern.test(Obj.reviewer))
 }
