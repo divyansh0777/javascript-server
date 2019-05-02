@@ -58,7 +58,7 @@ export class Server {
   }
 
   public run = () => {
-    this.app.listen(this.PORT, () => {
+    this.app.listen(this.PORT || 3002, () => {
       console.log(`App is running on port ${this.PORT} in (${this.NODE_ENV})`);
     });
   }

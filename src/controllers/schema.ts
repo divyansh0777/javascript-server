@@ -1,22 +1,33 @@
-let schema = {
+export default {
   create: {
     id: {
-    required: true,
-    string: true,
-    in:['body'],
-    custom: function(value) {
-      console.log('Value', value);
-      throw { error: 'Error Occurred', message: 'Message' }
-      }
+      required: true,
+
+      in:['body'],
+      errorMessage: 'Id is required or you have entered wrong ID'
     },
 
     name: {
       required: true,
       regex: '',
       in: ['body'],
-      errorMessage: 'Name is required',
+      errorMessage: 'Name is required or you have entered wrong name',
     }
   },
+
+  post: {
+    id: {
+      optional: false,
+      in:['body'],
+      errorMessage: 'Id is required or you have entered wrong ID'
+    },
+
+    email: {
+      regex: (/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/),
+      in: ['body'],
+      errorMessage: 'Name is required or you have entered wrong name',
+    }
+   },
 
   delete: {
     id: {
@@ -44,5 +55,3 @@ let schema = {
     }
   }
 }
-
-export {schema}

@@ -22,5 +22,9 @@ class controller {
     return response.status(200).json({"data": request.body });
   }
 
+  public postSchemaCheck(request, response, next){
+    console.log(request.body);
+    response.status(200).json(request.body)
+  }
 }
  export default new controller()

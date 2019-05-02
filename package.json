@@ -22,8 +22,9 @@
     "precompile": "rm -r ./dist",
     "compile": "tsc --project .",
     "execute": "npx babel-node dist",
-    "tslint": "tslint -c 'extraTS/**/*.ts'",
-    "tslint fix": "tslint --fix 'extraTS/**/*.ts'",
+    "commitizen": "npx git-cz",
+    "tslint": "tslint -c 'extraTS'",
+    "tslintfix": "tslint --fix 'extraTS/**/*'",
     "src": "tsc-watch --p . --onSuccess \"npm run nodemon\"",
     "nodemon": "nodemon ./dist",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -37,5 +38,12 @@
   "bugs": {
     "url": "https://github.com/divyansh0777/javascript-server/issues"
   },
-  "homepage": "https://github.com/divyansh0777/javascript-server#readme"
+  "homepage": "https://github.com/divyansh0777/javascript-server#readme",
+
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run tslintfix",
+      "pre-commit": "npm run compile"
+    }
+  }
 }
