@@ -1,7 +1,7 @@
-import { eqTriangleInterface } from '../interfaces'
-let eT : eqTriangleInterface;
+import { IEquilateralTriangle } from '../interfaces'
 
-eT = (value: number) => {
+let equilateralTriangle : IEquilateralTriangle;
+equilateralTriangle = (value: number) => {
   for (let i = 1; i <= value; i++) {
     let result = "";
 
@@ -17,4 +17,4 @@ eT = (value: number) => {
   }
 }
 
-export {eT};
+export { equilateralTriangle };
