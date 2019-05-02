@@ -1,6 +1,6 @@
-let a = process.argv[2];
+parameter = process.argv[2];
 
-let triangle = (value) => {
+triangle = (value) => {
   for (let i = 1; i <= value; i++) {
     let result = "";
 
@@ -16,4 +16,4 @@ let triangle = (value) => {
   }
 }
 
-triangle (a);
+triangle ( parameter );    
