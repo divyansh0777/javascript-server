@@ -10,6 +10,7 @@
     "@babel/preset-env": "^7.4.3",
     "@types/node": "^11.13.7",
     "body-parser": "^1.19.0",
+    "commitizen": "^3.1.1",
     "dotenv": "^7.0.0",
     "express": "^4.16.4",
     "husky": "^2.1.0",
@@ -19,12 +20,16 @@
     "typescript": "^3.4.5"
   },
   "scripts": {
+    "pattern": "npx babel-node pattern/extra",
+    "utils": "npx babel-node utils",
+    "validation": "npx babel-node validation/extra",
     "precompile": "rm -r ./dist",
     "compile": "tsc --project .",
     "execute": "npx babel-node dist",
-    "tslint": "tslint -c 'extraTS/**/*.ts'",
-    "tslint fix": "tslint --fix 'extraTS/**/*.ts'",
-    "src": "tsc-watch --p . --onSuccess \"npm run nodemon\"",
+    "commitizen": "npx git-cz",
+    "tslint": "tslint -c 'extraTS'",
+    "tslintfix": "tslint --fix 'extraTS'",
+    "extraTS": "tsc-watch --p . --onSuccess \"npm run nodemon\"",
     "nodemon": "nodemon ./dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -37,5 +42,12 @@
   "bugs": {
     "url": "https://github.com/divyansh0777/javascript-server/issues"
   },
-  "homepage": "https://github.com/divyansh0777/javascript-server#readme"
+  "homepage": "https://github.com/divyansh0777/javascript-server#readme",
+
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run tslintfix",
+      "pre-commit": "npm run compile"
+    }
+  }
 }

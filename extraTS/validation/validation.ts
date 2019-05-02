@@ -1,11 +1,8 @@
-import * as constants from '../constants';
-import { validateEmailInterface } from '../interfaces';
+import { IValidateEmail } from '../interfaces';
 
 export function validateUsers (users) {
   console.log(users);
   users.forEach((key) => {
-    let traineeEmail = constants.TRAINEE_EMAIL;
-    let reviewerEmail = constants.REVIEWER_EMAIL;
     let newObj = {
       trainee : key.traineeEmail,
       reviewer : key.reviewerEmail
@@ -16,7 +13,7 @@ export function validateUsers (users) {
 
 let pattern = new RegExp (/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/);
 
-function validateEmail (Obj : validateEmailInterface): void {
+function validateEmail (Obj : IValidateEmail): void {
   console.log(pattern.test(Obj.trainee))
   console.log(pattern.test(Obj.reviewer))
 }

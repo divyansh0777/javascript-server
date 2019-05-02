@@ -1,20 +1,17 @@
 import * as express from 'express';
 import * as initBodyParser from 'body-parser';
-import { default as notFoundRoutes } from './config/libs/routes/notFoundRoutes'
-import { default as errorHandler } from './config/libs/routes/errorHandler'
-export class Server {
+import notFoundRoutes from './config/libs/routes/notFoundRoutes'
+import errorHandler from './config/libs/routes/errorHandler'
+export default class {
   private app = express();
   private PORT;
   private NODE_ENV;
+  public bodyParser = initBodyParser;
 
-  public bodyParser = require('body-parser');
-
-  constructor(con) {
-    this.PORT = con.port;
-    this.NODE_ENV = con.node_env;
+  constructor(config) {
+    this.PORT = config.port;
+    this.NODE_ENV = config.node_env;
   }
-
-
 
   public bootstrap = () => {
     this.setupRoutes();
@@ -23,8 +20,6 @@ export class Server {
   }
 
   public setupRoutes = () => {
-
-
     this.app.get('/', (request, response) => {
       response.send("Hello welcome to Successive");
     })
@@ -44,14 +39,12 @@ export class Server {
     this.app.use(notFoundRoutes);
     this.app.use(errorHandler);
 
-
     return this;
   }
 
   public initBodyParser = () => {
     this.app.use(this.bodyParser.text({ type: 'text/html' }));
     this.app.use(this.bodyParser.urlencoded({ extended: false }))
-    // this.app.initBodyParser
   }
 
   public run = () => {
@@ -59,5 +52,4 @@ export class Server {
       console.log(`App is running on port ${this.PORT} in (${this.NODE_ENV})`);
     });
   }
-
 }

@@ -1,2 +1,2 @@
-export {diamond} from './diamond'
-export {eT} from './equilateralTriangle'
+export { diamond } from './diamond'
+export { equilateralTriangle } from './equilateralTriangle'
