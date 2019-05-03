@@ -7,7 +7,6 @@ export class Server {
   private PORT;
   private NODE_ENV;
 
-
   public bodyParser = require('body-parser');
 
   constructor(con) {
@@ -32,11 +31,11 @@ export class Server {
       response.send("I am ok");
     })
 
-    this.app.post('/postTest', (request, response) => {
+    this.app.post('/post-test', (request, response) => {
       response.send('this is post request');
     })
 
-    this.app.get('/errorTest', (request, response, next) => {
+    this.app.get('/error-test', (request, response, next) => {
       throw new Error('This is an error');
     })
 
@@ -58,7 +57,7 @@ export class Server {
   }
 
   public run = () => {
-    this.app.listen(this.PORT || 3002, () => {
+    this.app.listen(this.PORT, () => {
       console.log(`App is running on port ${this.PORT} in (${this.NODE_ENV})`);
     });
   }

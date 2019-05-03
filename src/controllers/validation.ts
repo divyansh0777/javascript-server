@@ -1,14 +1,17 @@
 import { validationResult, checkSchema } from "express-validator/check";
-import  Schema  from '../controllers/schema'
 
-export const postValidation = (request, response, next) => {
-  checkSchema(Schema.post as any );
 
-  const errors = validationResult(request);
+const validator = (schema) => {
+  return [
+    checkSchema(schema), (req, res, next) => {
+      const errors = validationResult(req);
 
-  if (!errors.isEmpty()) {
-    next({errors: errors.array()});
+      if (!errors.isEmpty()) {
+        next({error: errors.array()})
+      }
+       next();
     }
-
-  next();
+  ]
 }
+
+export default validator;
