@@ -18,6 +18,6 @@
   },
 
   "exclude": ["dist"],
-  "include": ["extraTS"],
+  "include": ["src"],
   "types": ["src/types"]
 }
