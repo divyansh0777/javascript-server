@@ -1,10 +1,9 @@
 import * as express from 'express';
-import { default as notFoundRoutes } from './config/libs/routes/notFoundRoutes';
-import { default as errorHandler } from './config/libs/routes/errorHandler'
-import traineeRouter from './controllers/trainee/routes'
-import { initBodyParser } from 'body-parser'
-
-export class Server {
+import * as initBodyParser from 'body-parser';
+import notFoundRoutes from './config/libs/routes/notFoundRoutes'
+import errorHandler from './config/libs/routes/errorHandler'
+import traineeRoutes from './controllers/trainee/routes'
+export default class {
   private app = express();
   private PORT;
   private NODE_ENV;
@@ -40,10 +39,11 @@ export class Server {
     })
 
     this.app.get('/api', (request, response) => {
-      response.send("You have two modules trainee and user");
+      response.send("You have two modules trainee and user")
     })
 
-    this.app.use('/api', traineeRouter);
+    this.app.use('/api', traineeRoutes);
+    this.app.use(notFoundRoutes);
     this.app.use(errorHandler);
     this.app.use(notFoundRoutes);
 
