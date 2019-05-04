@@ -1,7 +1,7 @@
 import * as express from 'express';
 import { default as notFoundRoutes } from './config/libs/routes/notFoundRoutes'
 import { default as errorHandler } from './config/libs/routes/errorHandler'
-import { traineeRouter } from './routes'
+import traineeRouter from './controllers/trainee/routes'
 
 export class Server {
   private app = express();
