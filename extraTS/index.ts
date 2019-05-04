@@ -6,6 +6,8 @@ import { validateUsers } from './validation';
 console.log("\n**************Patterns**************************\n");
 
 //Patterns Importing from patterns
+console.log("***********Triangle Patterns************\n");
+
 diamond(5);
 equilateralTriangle(5);
 
