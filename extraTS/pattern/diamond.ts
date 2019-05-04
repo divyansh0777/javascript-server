@@ -1,6 +1,6 @@
 import { IDiamond } from '../interfaces'
-let diamond: IDiamond;
 
+let diamond: IDiamond;
 diamond = (value) => {
   for (let i = 1; i <= value ; i++) {
     let result = "";

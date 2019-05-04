@@ -15,6 +15,7 @@ export default class {
   }
 
   public bootstrap = () => {
+    this.initBodyParser();
     this.setupRoutes();
     this.initBodyParser();
     return this;
@@ -44,6 +45,7 @@ export default class {
     this.app.use('/api', traineeRoutes);
     this.app.use(notFoundRoutes);
     this.app.use(errorHandler);
+    this.app.use(notFoundRoutes);
 
     return this;
   }
@@ -51,10 +53,11 @@ export default class {
   public initBodyParser = () => {
     this.app.use(this.bodyParser.text({ type: 'text/html' }));
     this.app.use(this.bodyParser.urlencoded({ extended: false }))
+    // this.app.initBodyParser
   }
 
   public run = () => {
-    this.app.listen(this.PORT, () => {
+    this.app.listen(this.PORT || 3002 || 9001 || 8080, () => {
       console.log(`App is running on port ${this.PORT} in (${this.NODE_ENV})`);
     });
   }

@@ -1,4 +1,5 @@
 import { IEquilateralTriangle } from '../interfaces'
+
 let equilateralTriangle : IEquilateralTriangle;
 
 equilateralTriangle = (value: number) => {

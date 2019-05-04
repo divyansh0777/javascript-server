@@ -18,4 +18,3 @@ export interface IValidateEmail {
   trainee : string,
   reviewer : string
 }
-
