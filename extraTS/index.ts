@@ -3,13 +3,15 @@ import * as constants from './constants';
 import { hasPermission } from './utils';
 import { validateUsers } from './validation';
 
+console.log("\n**************Patterns**************************\n");
+
 //Patterns Importing from patterns
-console.log("\n*************Patterns******************\n");
+console.log("***********Triangle Patterns************\n");
 
 diamond(5);
 equilateralTriangle(5);
 
-console.log("\n*************Testing Permissions******************\n");
+console.log("\n**************Testing for Permissions******************\n");
 
 //util
 console.log(hasPermission("getUsers","trainer","write"));           //True
@@ -18,7 +20,7 @@ console.log(hasPermission( "getUsers","trainer","read"));           //True
 console.log(hasPermission( "getUsers","trainee","write"));          //False
 console.log(hasPermission( "getUsers","head_trainer","write"));     //True
 
-console.log("\n**********Validating Users Emails******************************\n");
+console.log("\n****************Validating Emails************************\n");
 
 //Validation
 const users = [

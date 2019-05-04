@@ -1,5 +1,3 @@
-import { IDiamond, IValidateEmail } from './interfaces';
-
 export interface IDiamond {
   (val: number): void;
 }
