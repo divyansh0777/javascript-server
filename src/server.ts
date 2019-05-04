@@ -53,7 +53,6 @@ export class Server {
   public initBodyParser = () => {
     this.app.use(this.bodyParser.text({ type: 'text/html' }));
     this.app.use(this.bodyParser.urlencoded({ extended: false }))
-    // this.app.initBodyParser
   }
 
   public run = () => {

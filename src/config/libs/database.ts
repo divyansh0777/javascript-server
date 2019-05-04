@@ -1,19 +1,26 @@
-import { configure } from '../../config/configuration'
-import { mongo } from 'mongoose';
+import * as mongoose from 'mongoose';
+import { configure } from '../configuration'
 
 class database {
   public open = () => {
-    new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       const url = configure.mongo_url;
-      mongo.connect(url, (err) => {
-        reject("Connection not establish check your DB");
+
+      mongoose.connect(url, {useNewUrlParser: true});
+
+      mongoose.connection.on('connected', () => {
+        console.log("Database connected");
+        resolve();
       });
 
+      mongoose.connection.on('error', () => {
+        reject();
+      });
     });
   }
 
   public disconnect = () => {
-
+    mongoose.disconnect();
   }
 }
 
