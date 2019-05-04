@@ -1,4 +1,4 @@
-import { Server } from './server'
+import  { Server } from './server'
 import {configure} from './config/configuration'
 
 const serve = new Server(configure);

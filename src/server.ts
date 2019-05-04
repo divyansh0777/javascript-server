@@ -1,23 +1,23 @@
 import * as express from 'express';
-import { default as notFoundRoutes } from './config/libs/routes/notFoundRoutes'
+import { default as notFoundRoutes } from './config/libs/routes/notFoundRoutes';
 import { default as errorHandler } from './config/libs/routes/errorHandler'
-import { traineeRouter } from './routes'
+import traineeRouter from './controllers/trainee/routes'
+import { initBodyParser } from 'body-parser'
+
 export class Server {
   private app = express();
   private PORT;
   private NODE_ENV;
+  public bodyParser = initBodyParser;
 
-
-  public bodyParser = require('body-parser');
-
-  constructor(con) {
-    this.PORT = con.port;
-    this.NODE_ENV = con.node_env;
+  constructor(config) {
+    this.PORT = config.port;
+    this.NODE_ENV = config.node_env;
   }
 
-
-
   public bootstrap = () => {
+    this.initBodyParser();
+    this.setupRoutes();
     this.initBodyParser();
     this.setupRoutes();
     return this;
@@ -58,9 +58,8 @@ export class Server {
   }
 
   public run = () => {
-    this.app.listen(this.PORT || 3002, () => {
+    this.app.listen(this.PORT, () => {
       console.log(`App is running on port ${this.PORT} in (${this.NODE_ENV})`);
     });
   }
-
 }

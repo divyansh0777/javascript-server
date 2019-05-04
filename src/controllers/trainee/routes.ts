@@ -2,7 +2,7 @@ import * as express from 'express'
 import { default as traineeController } from './controllers'
 import {check, checkSchema, validationResult } from 'express-validator/check'
 import  Schema  from '../schema'
-import * as validation from '../validation'
+import validator from '../validation'
 
 Object.freeze(traineeController);
 const traineeRouter = express.Router();
@@ -15,7 +15,7 @@ traineeRouter.post('/trainee/post', [
   check('email', 'Enter valid email').isEmail()
 ], traineeController.postDataCheck);
 
-traineeRouter.post('/trainee/post-schema', validation.postValidation, traineeController.postSchemaCheck);
+traineeRouter.post('/trainee/post-schema', validator(Schema.post), traineeController.postSchemaCheck);
 
 
 export default traineeRouter;

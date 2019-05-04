@@ -1,57 +1,44 @@
 export default {
   create: {
     id: {
-      required: true,
-
-      in:['body'],
-      errorMessage: 'Id is required or you have entered wrong ID'
-    },
-
-    name: {
-      required: true,
-      regex: '',
+      isLength:{
+        options:{max: 2}
+      },
       in: ['body'],
-      errorMessage: 'Name is required or you have entered wrong name',
+      errorMessage: 'Id is required or you have entered wrong ID'
     }
   },
 
   post: {
     id: {
-      optional: false,
-      in:['body'],
-      errorMessage: 'Id is required or you have entered wrong ID'
-    },
-
-    email: {
-      regex: (/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/),
+      isLength: {
+        options: { min: 2,
+          max: 2 }
+      },
       in: ['body'],
-      errorMessage: 'Name is required or you have entered wrong name',
+      errorMessage: 'You have entered wrong ID'
     }
-   },
+  },
 
   delete: {
     id: {
-      required: true,
-      errorMessage: 'Id is required',
-      in: ['params']
+      isLength: {
+        options: { min: 2,
+          max: 2 }
+      },
+      in: ['body'],
+      errorMessage: 'You have entered wrong ID'
     }
   },
 
   get: {
-    skip: {
-      required: false,
-      default: 0,
-      number: true,
-      in: ['query'],
-      errorMessage: 'Skip is invalid',
-    },
-
-    limit: {
-      required: false,
-      default: 10,
-      number: true,
-      in: ['query'],
-      errorMessage: 'Limit is invalid',
+    id: {
+      isLength: {
+        options: { min: 2,
+          max: 2 }
+      },
+      in: ['body'],
+      errorMessage: 'You have entered wrong ID'
     }
-  }
+  },
 }

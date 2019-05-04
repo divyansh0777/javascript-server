@@ -23,7 +23,6 @@ class controller {
   }
 
   public postSchemaCheck(request, response, next){
-    console.log(request.body);
     response.status(200).json(request.body)
   }
 }

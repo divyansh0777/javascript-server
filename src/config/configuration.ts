@@ -8,4 +8,4 @@ configure = Object.freeze({
   node_env: process.env.node_env
 });
 
-export {configure};
+export { configure };
