@@ -7,9 +7,11 @@ import validator from '../validation'
 Object.freeze(traineeController);
 const traineeRouter = express.Router();
 
-traineeRouter.get('/trainee/get', traineeController.getRequest);
-traineeRouter.put('/trainee/put', traineeController.putRequest);
+traineeRouter.get('/get', traineeController.getRequest);
+traineeRouter.put('/put', traineeController.putRequest);
+traineeRouter.delete('/delete', traineeController.deleteRequest);
 traineeRouter.delete('/trainee/delete', traineeController.deleteRequest);
+
 traineeRouter.post('/trainee/post', [
   check('id', 'Enter valid ID').isLength({max:2}),
   check('email', 'Enter valid email').isEmail()
