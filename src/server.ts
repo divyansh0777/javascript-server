@@ -18,6 +18,7 @@ export default class {
     this.initBodyParser();
     this.setupRoutes();
     this.initBodyParser();
+    this.setupRoutes();
     return this;
   }
 
@@ -57,7 +58,7 @@ export default class {
   }
 
   public run = () => {
-    this.app.listen(this.PORT || 3002 || 9001 || 8080, () => {
+    this.app.listen(this.PORT, () => {
       console.log(`App is running on port ${this.PORT} in (${this.NODE_ENV})`);
     });
   }

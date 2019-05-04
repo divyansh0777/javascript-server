@@ -4,7 +4,7 @@ dotEnv.config();
 
 let configure: IConfig;
 configure = Object.freeze({
-  port: process.env.port || 9000 || 9001,
+  port: process.env.port ,
   node_env: process.env.node_env
 });
 
