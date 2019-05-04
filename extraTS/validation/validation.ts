@@ -13,7 +13,7 @@ export function validateUsers (users) {
 
 let pattern = new RegExp (/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/);
 
-let validateEmail = (Obj : IValidateEmail): void => {
+function validateEmail (Obj : IValidateEmail): void {
   console.log(pattern.test(Obj.trainee))
   console.log(pattern.test(Obj.reviewer))
 }

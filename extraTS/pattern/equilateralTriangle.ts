@@ -1,6 +1,6 @@
 import { IEquilateralTriangle } from '../interfaces'
-
 let equilateralTriangle : IEquilateralTriangle;
+
 equilateralTriangle = (value: number) => {
   for (let i = 1; i <= value; i++) {
     let result = "";
