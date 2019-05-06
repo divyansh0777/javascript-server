@@ -1,6 +1,6 @@
-let a = process.argv[2];
+parameter = process.argv[2];
 
-let diamond = (value) => {
+diamond = (value) => {
   for (let i = 1; i <= value; i++) {
     let result = "";
 
@@ -31,4 +31,4 @@ let diamond = (value) => {
   
 }
 
-diamond (a);
+diamond ( parameter );

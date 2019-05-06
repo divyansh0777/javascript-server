@@ -10,4 +10,4 @@ configure = Object.freeze({
   mongo_url: process.env.MONGO_URL
 });
 
-export {configure};
+export { configure };
