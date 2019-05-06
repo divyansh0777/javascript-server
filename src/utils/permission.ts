@@ -12,9 +12,9 @@ let permission = {
 
 let hasPermission: IHasPermission;
 
-hasPermission = (moduleName, role:String, permissionType:string ) => {
+hasPermission = (moduleName, role, permissionType ) => {
   return permission[moduleName][constants.PERMISSION_ALL].indexOf(role)!==-1 ||
     permission[moduleName][permissionType].indexOf(role)!==-1;
 }
 
-export {hasPermission};
+export { hasPermission };

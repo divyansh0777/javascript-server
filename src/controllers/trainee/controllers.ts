@@ -1,6 +1,10 @@
 import { validationResult } from "express-validator/check";
 
 class controller {
+  public getTrainee(request, response) {
+    response.send("You are inside Trainee Router")
+  }
+
   public getRequest(request, response) {
     response.send("This is a Get request inside from trainee Controller")
   }

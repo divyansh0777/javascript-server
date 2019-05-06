@@ -1,7 +1,7 @@
 import { validationResult, checkSchema } from "express-validator/check";
 
 
-const validator = (schema) => {
+const validator = ( schema ) => {
   return [
     checkSchema(schema), (req, res, next) => {
       const errors = validationResult(req);
