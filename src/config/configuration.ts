@@ -9,4 +9,4 @@ configure = Object.freeze({
   token_Key: process.env.token_Key
 });
 
-export {configure};
+export { configure };

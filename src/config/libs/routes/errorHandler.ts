@@ -1,11 +1,9 @@
-
-export default (error, request, response, next) => {
-  const customError = {
-      error: error.error,
-      message: error.message,
-      status: error.status,
-      timestamp: new Date()
-    }
-
-  response.json(customError);
+export default (err, req, res, next) => {
+  const errorDetails = {
+    error: err.error,
+    message: 'This is an error middleware',
+    status: '',
+    timestamp: new Date
+  }
+  res.json(errorDetails);
 }
