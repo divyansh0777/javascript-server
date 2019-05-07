@@ -1,12 +1,17 @@
 {
-  "include":{
   "defaultSeverity": "error",
-  "extends": ["tslint:recommended"],
+  "extends": [
+  "tslint:recommended"
+  ],
   "jsRules": {},
   "rules": {
-    "no-console":[
-      false
-    ]
+  "trailing-comma": [
+  false
+  ],
+  "shadowed-variable": false,
+  "no-console": [
+  false
+  ]
   },
-  "rulesDirectory": []}
-}
+  "rulesDirectory": []
+  }

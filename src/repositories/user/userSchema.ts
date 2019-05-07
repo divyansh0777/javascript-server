@@ -1,12 +1,9 @@
-import * as mongoose from 'mongoose'
-import { ObjectID } from 'mongodb';
+import * as mongoose from "mongoose";
 
-var userSchema = mongoose.Schema;
+const userSchema = mongoose.Schema;
 
 export default new userSchema({
-  user : {
-    _id: ObjectID,
-    name: String,
-    age: Number
-  }
-})
+  age: Number,
+  email: String,
+  name: String
+});
