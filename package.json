@@ -49,8 +49,7 @@
   "homepage": "https://github.com/divyansh0777/javascript-server#readme",
   "husky": {
     "hooks": {
-      "pre-push": "npm run tslintfix",
-      "pre-commit": "npm run compile"
+      "pre-push": "npm run compile"
     }
   }
 }
