@@ -31,8 +31,8 @@
     "compile": "tsc --project .",
     "execute": "npx babel-node dist",
     "commitizen": "npx git-cz",
-    "tslint": "tslint -c 'extraTS'",
-    "tslintfix": "tslint --fix 'extraTS/**/*'",
+    "tslint": "tslint --project .",
+    "extraTS": "tsc-watch --p . --onSuccess \"npm run nodemon\"",
     "src": "tsc-watch --p . --onSuccess \"npm run nodemon\"",
     "nodemon": "nodemon ./dist",
     "test": "echo \"Error: no test specified\" && exit 1"

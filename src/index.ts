@@ -1,4 +1,4 @@
-import { Server } from './server'
+import Server from './server'
 import { configure } from './config/configuration'
 import database from './config/libs/database'
 

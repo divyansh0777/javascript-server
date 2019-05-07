@@ -1,22 +1,22 @@
 import * as express from 'express';
-import { default as notFoundRoutes } from './config/libs/routes/notFoundRoutes'
-import { default as errorHandler } from './config/libs/routes/errorHandler'
-import { traineeRouter } from './routes'
-export class Server {
+import * as initBodyParser from 'body-parser';
+import notFoundRoutes from './config/libs/routes/notFoundRoutes'
+import errorHandler from './config/libs/routes/errorHandler'
+import traineeRoutes from './controllers/trainee/routes'
+export default class {
   private app = express();
   private PORT;
   private NODE_ENV;
+  public bodyParser = initBodyParser;
 
-  public bodyParser = require('body-parser');
-
-  constructor(con) {
-    this.PORT = con.port;
-    this.NODE_ENV = con.node_env;
+  constructor(config) {
+    this.PORT = config.port;
+    this.NODE_ENV = config.node_env;
   }
 
-
-
   public bootstrap = () => {
+    this.initBodyParser();
+    this.setupRoutes();
     this.initBodyParser();
     this.setupRoutes();
     return this;
@@ -40,10 +40,11 @@ export class Server {
     })
 
     this.app.get('/api', (request, response) => {
-      response.send("You have two modules trainee and user");
+      response.send("You have two modules trainee and user")
     })
 
-    this.app.use('/api', traineeRouter);
+    this.app.use('/api', traineeRoutes);
+    this.app.use(notFoundRoutes);
     this.app.use(errorHandler);
     this.app.use(notFoundRoutes);
 
@@ -60,5 +61,4 @@ export class Server {
       console.log(`App is running on port ${this.PORT} in (${this.NODE_ENV})`);
     });
   }
-
 }
