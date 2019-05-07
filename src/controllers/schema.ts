@@ -18,6 +18,16 @@ export default {
           min: 2
           }
       }
+    },
+
+    email: {
+      errorMessage: "Email not matched with Schema",
+      in: ["body"],
+      isLength: {
+        options: { max: 25,
+          min: 5
+          }
+      }
     }
   },
 

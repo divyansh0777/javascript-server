@@ -5,7 +5,7 @@ import { hasPermission } from "../../../utils";
 export default (moduleName: string, permissionType: string) => (request, response, next) => {
 
   const token = request.header("Authorization");
-  // if(token.startsWith("Bearer")){
+  // if (token.startsWith("Bearer")) {
   //   token = token.slice(7, token.length);
   // }
 
@@ -13,8 +13,8 @@ export default (moduleName: string, permissionType: string) => (request, respons
 // tslint:disable-next-line: no-shadowed-variable
     jwt.verify(token, configure.tokenKey, (err, request) => {
       if (err) {
-        next({ error : {
-          error: "Token Not Found",
+        next ({ error : {
+          error: "Token Not verified",
           message: "Enter valid token",
           status: 403
         }});
@@ -27,7 +27,7 @@ export default (moduleName: string, permissionType: string) => (request, respons
       }
     });
   } else {
-    response.send("Token not verified");
+    response.send("Token is empty");
   }
 };
 

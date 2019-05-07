@@ -5,15 +5,19 @@ class Controller {
     response.send("This is a Get request inside from trainee Controller");
   }
 
+  public postRequest(request, response) {
+    response.send("This is post request inside from trainee Controller");
+  }
+
   public putRequest(request, response) {
-    response.send("This is a PUT request");
+    response.send("This is a PUT request inside from trainee Controller");
   }
 
   public deleteRequest(request, response) {
-    response.send("This is a DELETE request");
+    response.send("This is a DELETE request inside from trainee Controller");
   }
 
-  public postDataCheck(request, response, next) {
+  public postCheck(request, response) {
     const errors = validationResult(request);
 
     if (!errors.isEmpty()) {
@@ -21,9 +25,6 @@ class Controller {
     }
     return response.status(200).json({data: request.body });
   }
-
-  public postSchemaCheck(request, response, next) {
-    response.status(200).json(request.body);
-  }
 }
+
 export default new Controller();

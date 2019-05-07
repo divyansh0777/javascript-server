@@ -2,7 +2,7 @@ import * as initBodyParser from "body-parser";
 import * as express from "express";
 import errorHandler from "./config/libs/routes/errorHandler";
 import notFoundRoutes from "./config/libs/routes/notFoundRoutes";
-import { traineeRouter } from "./routes";
+import { route } from "./routes";
 
 export default class {
   public bodyParser = initBodyParser;
@@ -42,7 +42,7 @@ export default class {
       response.send("You have two modules trainee and user");
     });
 
-    this.app.use("/api", traineeRouter);
+    this.app.use("/api", route);
     this.app.use(notFoundRoutes);
     this.app.use(errorHandler);
 

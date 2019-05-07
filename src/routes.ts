@@ -1,2 +1,10 @@
-export { traineeController } from "./controllers/trainee";
-export { traineeRouter } from "./controllers/trainee";
+import * as express from "express";
+import { traineeRouter } from "./controllers/trainee";
+import { userRouter } from "./controllers/user";
+
+const route = express.Router();
+
+route.use("/trainee", traineeRouter);
+route.use("/trainee", userRouter);
+
+export { route };
