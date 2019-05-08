@@ -1,20 +1,20 @@
-import { IHasPermission } from './interfaces';
-import * as constants from './constants'
+import * as constants from "./constants";
+import { IHasPermission } from "./interfaces";
 
-let permission = {
+const permission = {
   [constants.MODULE_USER]: {
     [constants.PERMISSION_ALL] : [constants.HEAD_TRAINER],
     [constants.PERMISSION_READ] : [constants.TRAINEE, constants.TRAINER],
     [constants.PERMISSION_WRITE] : [constants.TRAINER],
     [constants.PERMISSION_DELETE]: []
   }
-}
+};
 
 let hasPermission: IHasPermission;
 
 hasPermission = (moduleName, role, permissionType ) => {
-  return permission[moduleName][constants.PERMISSION_ALL].indexOf(role)!==-1 ||
-    permission[moduleName][permissionType].indexOf(role)!==-1;
-}
+  return permission[moduleName][constants.PERMISSION_ALL].indexOf(role) !== -1 ||
+    permission[moduleName][permissionType].indexOf(role) !== -1;
+};
 
 export { hasPermission };

@@ -1,5 +1,4 @@
-import { validationResult, checkSchema } from "express-validator/check";
-
+import { checkSchema, validationResult } from "express-validator/check";
 
 const validator = ( schema ) => {
   return [
@@ -7,11 +6,11 @@ const validator = ( schema ) => {
       const errors = validationResult(req);
 
       if (!errors.isEmpty()) {
-        next({error: errors.array()})
+        next({error: errors.array()});
       }
-       next();
+      next();
     }
-  ]
-}
+  ];
+};
 
 export default validator;

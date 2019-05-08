@@ -1,7 +1,5 @@
-export interface IHasPermission {
-  (
-    moduleName : string,
-    role : string,
-    permissionType : string
-  ): boolean;
-}
+export type IHasPermission = (
+    moduleName: string,
+    role: string,
+    permissionType: string
+  ) => boolean;

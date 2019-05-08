@@ -1,6 +1,6 @@
 export interface IConfig {
-  port: string,
-  nodeEnv: string,
-  tokenKey: any,
-  mongoUrl: string
+  mongoUrl: string;
+  nodeEnv: string;
+  port: string;
+  tokenKey: any;
 }

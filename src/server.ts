@@ -1,16 +1,16 @@
-import * as express from 'express';
-import * as initBodyParser from 'body-parser';
-import notFoundRoutes from './config/libs/routes/notFoundRoutes'
-import errorHandler from './config/libs/routes/errorHandler'
-import { traineeRouter } from './routes'
+import * as initBodyParser from "body-parser";
+import * as express from "express";
+import errorHandler from "./config/libs/routes/errorHandler";
+import notFoundRoutes from "./config/libs/routes/notFoundRoutes";
+import { router } from "./routes";
 
 export default class {
+  public bodyParser = initBodyParser;
   private app = express();
   private PORT: number;
   private NODE_ENV: string;
-  public bodyParser = initBodyParser;
 
-  constructor(configure) {
+  constructor( configure ) {
     this.PORT = configure.port;
     this.NODE_ENV = configure.nodeEnv;
   }
@@ -22,35 +22,35 @@ export default class {
   }
 
   public setupRoutes = () => {
-    this.app.get('/', (request, response) => {
+    this.app.get("/", (request, response) => {
       response.send("Hello welcome to Successive");
-    })
+    });
 
-    this.app.get('/health-check', (request, response) => {
+    this.app.get("/health-check", (request, response) => {
       response.send("I am ok");
-    })
+    });
 
-    this.app.post('/post-test', (request, response) => {
-      response.send('this is post request');
-    })
+    this.app.post("/", (request, response) => {
+      response.send("this is post request");
+    });
 
-    this.app.get('/error-test', (request, response, next) => {
-      throw new Error('This is an error');
-    })
+    this.app.get("/error-test", (request, response, next) => {
+      throw new Error("This is an error");
+    });
 
-    this.app.get('/api', (request, response) => {
-      response.send("You have two modules trainee and user")
-    })
+    this.app.get("/api", (request, response) => {
+      response.send("You have two modules trainee and user");
+    });
 
-    this.app.use('/api', traineeRouter);
+    this.app.use("/api", router);
     this.app.use(notFoundRoutes);
     this.app.use(errorHandler);
     return this;
   }
 
   public initBodyParser = () => {
-    this.app.use(this.bodyParser.text({ type: 'text/html' }));
-    this.app.use(this.bodyParser.urlencoded({ extended: false }))
+    this.app.use(this.bodyParser.text({ type: "text/html" }));
+    this.app.use(this.bodyParser.urlencoded({ extended: false }));
   }
 
   public run = () => {
