@@ -30,8 +30,7 @@
     "compile": "tsc --project .",
     "execute": "npx babel-node dist",
     "commitizen": "npx git-cz",
-    "tslint": "tslint -c 'extraTS'",
-    "tslintfix": "tslint --fix 'extraTS'",
+    "tslint": "tslint --project .",
     "extraTS": "tsc-watch --p . --onSuccess \"npm run nodemon\"",
     "src": "tsc-watch --p . --onSuccess \"npm run nodemon\"",
     "nodemon": "nodemon ./dist",
@@ -49,8 +48,8 @@
   "homepage": "https://github.com/divyansh0777/javascript-server#readme",
   "husky": {
     "hooks": {
-      "pre-push": "npm run tslintfix",
-      "pre-commit": "npm run compile"
+      "pre-push": "npm run compile",
+      "pre-commit": "npm run tslint"
     }
   }
 }
