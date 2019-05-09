@@ -5,6 +5,6 @@ import { userRouter } from "./controllers/user";
 const route = express.Router();
 
 route.use("/trainee", traineeRouter);
-route.use("/trainee", userRouter);
+route.use("/user", userRouter);
 
 export { route };
