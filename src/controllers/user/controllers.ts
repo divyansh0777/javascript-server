@@ -51,12 +51,10 @@ class UserController {
     response.send("User signed Up");
 
     } catch (error) {
-      next({error:{
+      next({error: {
         error: "User not signed up"
       }});
     }
-
-
   }
 
 /*-------------*/
