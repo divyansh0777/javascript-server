@@ -25,6 +25,11 @@ class Controller {
     }
     return response.status(200).json({data: request.body });
   }
+
+  public postSchemaCheck(request, response, next) {
+    response.status(200).json(request.body);
+  }
+
 }
 
 export default new Controller();
