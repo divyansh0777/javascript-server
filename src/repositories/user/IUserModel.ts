@@ -1,7 +1,8 @@
-import { ObjectId } from "bson";
+import { ObjectID } from "bson";
 import * as mongoose from "mongoose";
 
-export interface IUser extends mongoose.Document {
+export interface IUserModel extends mongoose.Document {
+  _id: ObjectID;
   age: number;
   email: string;
   name: string;
