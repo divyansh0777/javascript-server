@@ -1,5 +1,5 @@
 import * as mongoose from "mongoose";
-import * as userModel from "./userModel";
+import * as userModel from "./UserModel";
 
 class UserRepositories {
   public static generateObject() {
