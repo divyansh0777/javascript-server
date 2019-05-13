@@ -11,14 +11,14 @@ export default {
 
   post: {
     id: {
-      errorMessage: "You have entered wrong ID",
+      errorMessage: "Id not matched with Schema",
       in: ["body"],
       isLength: {
         options: { max: 2,
           min: 2
-        }
+          }
       }
-    },
+    }
   },
 
   delete: {
@@ -26,7 +26,7 @@ export default {
       errorMessage: "You have entered wrong ID",
       in: ["body"],
       isLength: {
-        options: {max: 2 ,
+        options: { max: 2,
           min: 2,
         }
       }
@@ -39,7 +39,7 @@ export default {
       in: ["body"],
       isLength: {
         options: { max: 2,
-          min: 2,
+          min: 2
         }
       }
     }
