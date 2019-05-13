@@ -30,7 +30,7 @@ class UserRepositories extends VersionableRepository {
     const storedPass = await this.findPassword({email});
     console.log(query.encryptPass);
     console.log("Pass----", storedPass);
-    const found = await bcrypt.compare(, query.encryptPass);
+    const found = await bcrypt.compare(query.encryptPass);
     if (!found) {
       throw new Error();
     }
