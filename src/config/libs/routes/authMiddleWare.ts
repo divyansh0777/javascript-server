@@ -22,7 +22,7 @@ export default (moduleName: string, permissionType: string) => (request, respons
         if (hasPermission(moduleName, request.role, permissionType)) {
           response.send("User Authenticated");
         } else {
-          response.status(403).json("User not Authenticate");1
+          response.status(403).json("User not Authenticate");
         }
       }
     });

@@ -4,27 +4,20 @@ import authMiddleWare from "../.././config/libs/routes/authMiddleWare";
 import * as constants from "../../utils/constants";
 import Schema from "../schema";
 import validator from "../validation";
-import { default as traineeController } from "./controllers";
+import traineeController from "./controllers";
 
 Object.freeze(traineeController);
+
 const traineeRouter = express.Router();
+Object.freeze(traineeRouter);
 
-traineeRouter.get("/get", authMiddleWare(constants.MODULE_USER, constants.PERMISSION_READ),
-  validator(Schema.get), traineeController.getRequest);
+traineeRouter.get("/", traineeController.getTrainee);
+traineeRouter.put("/", traineeController.putRequest);
+traineeRouter.delete("/", traineeController.deleteRequest);
+traineeRouter.post("/", traineeController.postRequest);
 
-traineeRouter.post("/delete", authMiddleWare(constants.MODULE_USER, constants.PERMISSION_WRITE),
-  validator(Schema.get), traineeController.postRequest);
+traineeRouter.post("/schema", validator(Schema.post), traineeController.postSchemaCheck);
 
-traineeRouter.put("/put", authMiddleWare(constants.MODULE_USER, constants.PERMISSION_WRITE),
- validator(Schema.get), traineeController.putRequest);
-
-traineeRouter.delete("/delete", authMiddleWare(constants.MODULE_USER, constants.PERMISSION_DELETE),
- validator(Schema.get), traineeController.deleteRequest);
-
-traineeRouter.post("/post-check", [
-  check("id", "Enter valid ID").isLength({max: 2}),
-  check("email", "Enter valid email").isEmail()
-  ]
-    , traineeController.postCheck);
+traineeRouter.post("/token", authMiddleWare("getUsers", "read"));
 
 export default traineeRouter;
