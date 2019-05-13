@@ -1,23 +1,22 @@
-import * as express from 'express'
-import { default as traineeController } from './controllers'
-import {check, checkSchema, validationResult } from 'express-validator/check'
-import  Schema  from '../schema'
-import validator from '../validation'
+import * as express from "express";
+import { check } from "express-validator/check";
+import { authMiddleWare } from "../.././config/libs/routes/authMiddleWare";
+import Schema from "../schema";
+import validator from "../validation";
+import traineeController from "./controllers";
 
 Object.freeze(traineeController);
+
 const traineeRouter = express.Router();
+Object.freeze(traineeRouter);
 
-traineeRouter.get('/get', traineeController.getRequest);
-traineeRouter.put('/put', traineeController.putRequest);
-traineeRouter.delete('/delete', traineeController.deleteRequest);
-traineeRouter.delete('/trainee/delete', traineeController.deleteRequest);
+traineeRouter.get("/", traineeController.getTrainee);
+traineeRouter.put("/", traineeController.putRequest);
+traineeRouter.delete("/", traineeController.deleteRequest);
+traineeRouter.post("/", traineeController.postRequest);
 
-traineeRouter.post('/trainee/post', [
-  check('id', 'Enter valid ID').isLength({max:2}),
-  check('email', 'Enter valid email').isEmail()
-], traineeController.postDataCheck);
+traineeRouter.post("/schema", validator(Schema.post), traineeController.postSchemaCheck);
 
-traineeRouter.post('/trainee/post-schema', validator(Schema.post), traineeController.postSchemaCheck);
-
+traineeRouter.post("/token", authMiddleWare("getUsers", "read"));
 
 export default traineeRouter;

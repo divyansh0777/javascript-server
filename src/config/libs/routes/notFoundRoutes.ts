@@ -1,4 +1,8 @@
 
 export default (req, res, next) => {
-  res.status(404).json('Page you are requesting is not found in server (Route middleware)');
-}
+  next({ error : {
+    error: "Page you are requesting is not found in server (Route middleware)",
+    message: "Route is not valid",
+    status: 404
+  }});
+};

@@ -13,7 +13,10 @@
     "commitizen": "^3.1.1",
     "dotenv": "^7.0.0",
     "express": "^4.16.4",
+    "express-validator": "^5.3.1",
     "husky": "^2.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.5.5",
     "nodemon": "^1.18.11",
     "tsc-watch": "^2.1.2",
     "tslint": "^5.16.0",
@@ -27,8 +30,7 @@
     "compile": "tsc --project .",
     "execute": "npx babel-node dist",
     "commitizen": "npx git-cz",
-    "tslint": "tslint -c 'extraTS'",
-    "tslintfix": "tslint --fix 'extraTS'",
+    "tslint": "tslint --project .",
     "extraTS": "tsc-watch --p . --onSuccess \"npm run nodemon\"",
     "src": "tsc-watch --p . --onSuccess \"npm run nodemon\"",
     "nodemon": "nodemon ./dist",
@@ -44,11 +46,10 @@
     "url": "https://github.com/divyansh0777/javascript-server/issues"
   },
   "homepage": "https://github.com/divyansh0777/javascript-server#readme",
-
   "husky": {
     "hooks": {
-      "pre-push": "npm run tslintfix",
-      "pre-commit": "npm run compile"
+      "pre-push": "npm run compile",
+      "pre-commit": "npm run tslint"
     }
   }
 }

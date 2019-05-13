@@ -1,0 +1,5 @@
+export type IHasPermission = (
+    moduleName: string,
+    role: string,
+    permissionType: string
+  ) => boolean;
