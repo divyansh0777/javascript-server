@@ -1,6 +1,6 @@
-import Server from './server'
-import { configure } from './config/configuration'
-import database from './config/libs/database'
+import { configure } from "./config/configuration"
+import database from "./config/libs/database"
+import Server from "./server"
 
 const serve = new Server(configure);
 serve.bootstrap();

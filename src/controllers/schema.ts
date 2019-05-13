@@ -1,44 +1,47 @@
 export default {
   create: {
     id: {
-      isLength:{
-        options:{max: 2}
-      },
-      in: ['body'],
-      errorMessage: 'Id is required or you have entered wrong ID'
+      errorMessage: "Id is required or you have entered wrong ID",
+      in: ["body"],
+      isLength: {
+        options: {max: 2}
+      }
     }
   },
 
   post: {
     id: {
+      errorMessage: "You have entered wrong ID",
+      in: ["body"],
       isLength: {
-        options: { min: 2,
-          max: 2 }
-      },
-      in: ['body'],
-      errorMessage: 'You have entered wrong ID'
-    }
+        options: { max: 2,
+          min: 2
+        }
+      }
+    },
   },
 
   delete: {
     id: {
+      errorMessage: "You have entered wrong ID",
+      in: ["body"],
       isLength: {
-        options: { min: 2,
-          max: 2 }
-      },
-      in: ['body'],
-      errorMessage: 'You have entered wrong ID'
+        options: {max: 2 ,
+          min: 2,
+        }
+      }
     }
   },
 
   get: {
     id: {
+      errorMessage: "You have entered wrong ID",
+      in: ["body"],
       isLength: {
-        options: { min: 2,
-          max: 2 }
-      },
-      in: ['body'],
-      errorMessage: 'You have entered wrong ID'
+        options: { max: 2,
+          min: 2,
+        }
+      }
     }
-  },
-}
+  }
+};

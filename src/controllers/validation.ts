@@ -1,17 +1,16 @@
-import { validationResult, checkSchema } from "express-validator/check";
+import { checkSchema, validationResult } from "express-validator/check";
 
-
-const validator = (schema) => {
+const validator = ( schema ) => {
   return [
     checkSchema(schema), (req, res, next) => {
       const errors = validationResult(req);
 
       if (!errors.isEmpty()) {
-        next({error: errors.array()})
+        next({error: errors.array()});
       }
-       next();
+      next();
     }
-  ]
-}
+  ];
+};
 
 export default validator;
