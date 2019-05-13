@@ -1,5 +1,5 @@
 import * as bcrypt from "bcrypt";
-import { configure } from "../../config/configuration";
+import { configuration } from "../../config/configuration";
 import VersionableRepository from "../versionable/VersionableRepository";
 import UserModel from "./UserModel";
 
@@ -11,7 +11,7 @@ class UserRepositories extends VersionableRepository {
   }
 
   public async encryptPass(value: string) {
-    const result = await bcrypt.hash(value, configure.saltPass);
+    const result = await bcrypt.hash(value, configuration.saltPass);
     return result;
   }
 
