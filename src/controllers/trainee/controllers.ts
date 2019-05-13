@@ -9,10 +9,6 @@ class Controller {
     response.send("You are inside Trainee Controller Post Router");
   }
 
-  public postRequest(request, response) {
-    response.send("This is post request inside from trainee Controller");
-  }
-
   public putRequest(request, response) {
     response.send("This is a PUT request inside from trainee Controller");
   }
