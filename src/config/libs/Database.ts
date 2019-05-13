@@ -8,6 +8,7 @@ class Database {
       const url = configure.mongoUrl;
 
       mongoose.connect(url, {useNewUrlParser: true});
+
       mongoose.connection.on("connected", () => {
         console.log("Database connected");
         seedData();
