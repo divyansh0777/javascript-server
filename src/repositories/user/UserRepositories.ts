@@ -28,11 +28,7 @@ class UserRepositories extends VersionableRepository {
   public async comparePassword(query: any = {}) {
     const { email, password } = query;
     const storedDoc = await this.findPassword({email});
-    console.log(storedDoc);
     const found = await bcrypt.compare(password, storedDoc.password);
-
-    console.log(found);
-
     if (!found) {
       throw new Error();
     }

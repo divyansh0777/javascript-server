@@ -1,5 +1,6 @@
 import * as mongoose from "mongoose";
 import { configuration } from "../configuration";
+import { seedData } from "./seedData";
 
 class Database {
   public open = () => {
@@ -10,6 +11,7 @@ class Database {
 
       mongoose.connection.on("connected", () => {
         console.log("Database connected");
+        seedData();
         resolve();
       });
 

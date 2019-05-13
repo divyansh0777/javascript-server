@@ -4,15 +4,15 @@ import UserRepositories from "../../repositories/user/UserRepositories";
 class UserController {
 
   public signIn = async (request, response, next) => {
+    const { email, password } = request.body;
     try {
-      const { email, password } = request.body;
       const userFound = await UserRepositories.count({email});
-
       if ( userFound ) {
-        const encryptPass = await UserRepositories.encryptPass(password);
-        const compare = await UserRepositories.comparePassword({email, password, encryptPass});
+        const compare = await UserRepositories.comparePassword({email, password });
         if ( compare ) {
+// tslint:disable-next-line: no-shadowed-variable
           const data = await UserRepositories.read({email});
+// tslint:disable-next-line: no-shadowed-variable
           const token = jwt.sign({ data } , configuration.tokenKey, {
           expiresIn: 86400
           });
@@ -26,6 +26,11 @@ class UserController {
         status: 403
       }});
     }
+    const data = await UserRepositories.read({email});
+    const token = jwt.sign({ data } , configuration.tokenKey, {
+      expiresIn: 86400
+    });
+    response.send(token);
   }
 
 /*-------------*/
