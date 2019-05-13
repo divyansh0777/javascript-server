@@ -5,7 +5,7 @@ export class UserSchema extends VersionableSchema {
   constructor(options: any) {
     const USchema = {
       age: Number,
-      email: {type: String, required: true},
+      email: {type: String, unique: true, required: true},
       name: String,
       password: {type: String, required: true},
       role: String

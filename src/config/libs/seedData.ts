@@ -7,14 +7,14 @@ export const seedData = async () => {
       age: 23,
       email: "divyansh01@successive.tech",
       name: "Divyansh Mishra",
-      password: "divyansh01",
+      password: await UserRepositories.encryptPass("divyansh01"),
       role: "trainee"
     },
     {
       age: 23,
       email: "anshul02@successive.tech",
       name: "Anshul Shrivastava",
-      password: "anshul02",
+      password: await UserRepositories.encryptPass("anshul02"),
       role: "head-trainer"
     },
     {

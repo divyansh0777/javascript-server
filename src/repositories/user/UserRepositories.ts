@@ -25,8 +25,25 @@ class UserRepositories extends VersionableRepository {
     return result;
   }
 
+  public async comparePassword(query: any = {}) {
+    const { email, password, encryptPass } = query;
+    const storedPass = await this.findPassword({email});
+    console.log(query.encryptPass);
+    console.log("Pass----", storedPass);
+    const found = await bcrypt.compare(, query.encryptPass);
+    if (!found) {
+      throw new Error();
+    }
+    return found;
+  }
+
   public async count(query: any =  {}) {
     const result = await UserModel.countDocuments(query);
+    return result;
+  }
+
+  public async findPassword(query: any =  {}) {
+    const result = await UserModel.find(query, {password: 1, _id: 0});
     return result;
   }
 
