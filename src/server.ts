@@ -10,9 +10,9 @@ export default class {
   private PORT: number;
   private NODE_ENV: string;
 
-  constructor(configure) {
-    this.PORT = configure.port;
-    this.NODE_ENV = configure.nodeEnv;
+  constructor( configuration ) {
+    this.PORT = configuration.port;
+    this.NODE_ENV = configuration.nodeEnv;
   }
 
   public bootstrap = () => {
@@ -30,7 +30,7 @@ export default class {
       response.send("I am ok");
     });
 
-    this.app.post("/post-test", (request, response) => {
+    this.app.post("/", (request, response) => {
       response.send("this is post request");
     });
 
@@ -45,7 +45,6 @@ export default class {
     this.app.use("/api", route);
     this.app.use(notFoundRoutes);
     this.app.use(errorHandler);
-
     return this;
   }
 

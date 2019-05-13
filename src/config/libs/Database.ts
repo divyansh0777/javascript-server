@@ -1,21 +1,19 @@
 import * as mongoose from "mongoose";
-import { configure } from "../configuration";
-import { seedData } from "./seedData";
+import { configuration } from "../configuration";
 
 class Database {
   public open = () => {
-    return new Promise ((resolve, reject) => {
-      const url = configure.mongoUrl;
+    return new Promise((resolve, reject) => {
+      const url = configuration.mongoUrl;
 
       mongoose.connect(url, {useNewUrlParser: true});
+
       mongoose.connection.on("connected", () => {
-        seedData();
         console.log("Database connected");
         resolve();
       });
 
       mongoose.connection.on("error", () => {
-        console.log("Connection not established");
         reject();
       });
     });

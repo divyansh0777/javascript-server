@@ -1,5 +1,5 @@
 import * as bcrypt from "bcrypt";
-import { configure } from "../../config/configuration";
+import { configuration } from "../../config/configuration";
 import VersionableRepository from "../versionable/VersionableRepository";
 import UserModel from "./UserModel";
 
@@ -11,7 +11,7 @@ class UserRepositories extends VersionableRepository {
   }
 
   public async encryptPass(value: string) {
-    const result = await bcrypt.hash(value, configure.saltPass);
+    const result = await bcrypt.hash(value, configuration.saltPass);
     return result;
   }
 
@@ -26,11 +26,13 @@ class UserRepositories extends VersionableRepository {
   }
 
   public async comparePassword(query: any = {}) {
-    const { email, password, encryptPass } = query;
-    const storedPass = await this.findPassword({email});
-    console.log(query.encryptPass);
-    console.log("Pass----", storedPass);
-    const found = await bcrypt.compare(query.encryptPass);
+    const { email, password } = query;
+    const storedDoc = await this.findPassword({email});
+    console.log(storedDoc);
+    const found = await bcrypt.compare(password, storedDoc.password);
+
+    console.log(found);
+
     if (!found) {
       throw new Error();
     }
@@ -43,7 +45,7 @@ class UserRepositories extends VersionableRepository {
   }
 
   public async findPassword(query: any =  {}) {
-    const result = await UserModel.find(query, {password: 1, _id: 0});
+    const result = await UserModel.findOne(query, {password: 1, _id: 0});
     return result;
   }
 
