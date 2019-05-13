@@ -10,35 +10,35 @@ export default {
   },
 
   post: {
-    // id: {
-    //   errorMessage: "Id not matched with Schema",
-    //   in: ["body"],
-    //   isLength: {
-    //     options: { max: 2,
-    //       min: 2
-    //       }
-    //   }
-    // },
+    id: {
+      errorMessage: "Id not matched with Schema",
+      in: ["body"],
+      isLength: {
+        options: { max: 2,
+          min: 2
+          }
+      }
+    },
 
-    // password: {
-    //   errorMessage: "Password not matched with Schema",
-    //   in: ["body"],
-    //   isLength: {
-    //     options: {
-    //       : 20
-    //     }
-    //   }
-    // },
+    password: {
+      errorMessage: "Password not matched with Schema",
+      in: ["body"],
+      isLength: {
+        options: {
+          min: 10
+        }
+      }
+    },
 
-    // email: {
-    //   errorMessage: "Email not matched with Schema",
-    //   in: ["body"],
-    //   isLength: {
-    //     options: { max: 25,
-    //       min: 5
-    //       }
-    //   }
-    // }
+    email: {
+      errorMessage: "Email not matched with Schema",
+      in: ["body"],
+      isLength: {
+        options: { max: 25,
+          min: 5
+          }
+      }
+    }
   },
 
   delete: {

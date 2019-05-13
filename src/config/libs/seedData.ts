@@ -1,4 +1,4 @@
-import UserRepositories from "../../repositories/user/userRepositories";
+import UserRepositories from "../../repositories/user/UserRepositories";
 
 export const seedData = async () => {
 
@@ -48,14 +48,28 @@ export const seedData = async () => {
   ];
 
   const result = await UserRepositories.count()
-    // tslint:disable-next-line: no-shadowed-variable
-    .then((result) => {
-      if (result === 0) {
-        UserRepositories.multipleSeeding(data);
-      } else {
-        console.log("Seeding already done");
-      }
-    }).catch((err) => {
+  // tslint:disable-next-line: no-shadowed-variable
+  .then((result) => {
+    if (result === 0) {
+        const allDone = UserRepositories.multipleSeeding(data)
+        // tslint:disable-next-line: no-shadowed-variable
+        .then((allDone) => {
+          const totalDocs = UserRepositories.totalCount()
+          // tslint:disable-next-line: no-shadowed-variable
+          .then((totalDocs) => {
+            console.log("Total-->", totalDocs);
+            console.log("Seeding Done");
+          });
+        });
+    } else {
+        const totalDocs = UserRepositories.totalCount()
+        // tslint:disable-next-line: no-shadowed-variable
+        .then((totalDocs) => {
+          console.log("Total-->", totalDocs);
+          console.log("Seeding already done");
+        });
+    }
+}).catch((err) => {
       throw new Error();
     });
 };
