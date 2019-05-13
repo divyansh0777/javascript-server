@@ -2,11 +2,7 @@ import * as initBodyParser from "body-parser";
 import * as express from "express";
 import errorHandler from "./config/libs/routes/errorHandler";
 import notFoundRoutes from "./config/libs/routes/notFoundRoutes";
-<<<<<<< HEAD
 import { route } from "./routes";
-=======
-import { router } from "./routes";
->>>>>>> feature/40011
 
 export default class {
   public bodyParser = initBodyParser;
