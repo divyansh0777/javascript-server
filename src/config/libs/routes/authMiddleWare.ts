@@ -2,9 +2,8 @@ import * as jwt from "jsonwebtoken";
 import { configure } from "../../../config/configuration";
 import { hasPermission } from "../../../utils";
 
-export default (moduleName: string, permissionType: string) => (request, response, next) => {
-
-  const token = request.header("Authorization");
+export const authMiddleWare = (moduleName, permissionType) => (request, response, next) => {
+  const token = request.header("authorization");
   // if(token.startsWith("Bearer")){
   //   token = token.slice(7, token.length);
   // }
@@ -15,19 +14,24 @@ export default (moduleName: string, permissionType: string) => (request, respons
       if (err) {
         next({ error : {
           error: "Token Not Found",
-          message: "Enter valid token",
+          message: "Token Not verified",
           status: 403
         }});
       } else {
         if (hasPermission(moduleName, request.role, permissionType)) {
           response.send("User Authenticated");
         } else {
-          response.status(403).json("User not Authenticate successfully");
+          next({ error : {
+            error: "Permission Denied",
+            message: "Role is not authenticated"
+          }});
         }
       }
     });
   } else {
-    response.send("Token not verified");
+    next({error: {
+      message: "You have entered wrong token or you left field"
+    }});
   }
 };
 

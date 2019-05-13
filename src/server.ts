@@ -2,7 +2,7 @@ import * as initBodyParser from "body-parser";
 import * as express from "express";
 import errorHandler from "./config/libs/routes/errorHandler";
 import notFoundRoutes from "./config/libs/routes/notFoundRoutes";
-import { traineeRouter } from "./routes";
+import { router } from "./routes";
 
 export default class {
   public bodyParser = initBodyParser;
@@ -10,7 +10,7 @@ export default class {
   private PORT: number;
   private NODE_ENV: string;
 
-  constructor(configure) {
+  constructor( configure ) {
     this.PORT = configure.port;
     this.NODE_ENV = configure.nodeEnv;
   }
@@ -30,7 +30,7 @@ export default class {
       response.send("I am ok");
     });
 
-    this.app.post("/post-test", (request, response) => {
+    this.app.post("/", (request, response) => {
       response.send("this is post request");
     });
 
@@ -42,10 +42,9 @@ export default class {
       response.send("You have two modules trainee and user");
     });
 
-    this.app.use("/api", traineeRouter);
+    this.app.use("/api", router);
     this.app.use(notFoundRoutes);
     this.app.use(errorHandler);
-
     return this;
   }
 
