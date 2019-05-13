@@ -1,5 +1,5 @@
 import * as jwt from "jsonwebtoken";
-import { configure } from "../../config/configuration";
+import { configuration } from "../../config/configuration";
 import UserRepositories from "../../repositories/user/UserRepositories";
 class UserController {
 
@@ -14,7 +14,7 @@ class UserController {
       }});
     }
     const data = await UserRepositories.read({email});
-    const token = jwt.sign({ data } , configure.tokenKey, {
+    const token = jwt.sign({ data } , configuration.tokenKey, {
       expiresIn: 86400
     });
     response.send(token);
@@ -31,7 +31,7 @@ class UserController {
         status: 403
       }});
     }
-    await jwt.verify(token, configure.tokenKey, (err) => {
+    await jwt.verify(token, configuration.tokenKey, (err) => {
       if (!err) {
         const decoded = jwt.decode(token);
         response.send(decoded);

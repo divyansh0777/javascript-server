@@ -1,11 +1,11 @@
 import * as mongoose from "mongoose";
-import { configure } from "../configuration";
+import { configuration } from "../configuration";
 import { seedData } from "./seedData";
 
 class Database {
   public open = () => {
     return new Promise((resolve, reject) => {
-      const url = configure.mongoUrl;
+      const url = configuration.mongoUrl;
 
       mongoose.connect(url, {useNewUrlParser: true});
 

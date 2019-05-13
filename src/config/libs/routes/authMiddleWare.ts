@@ -1,5 +1,5 @@
 import * as jwt from "jsonwebtoken";
-import { configure } from "../../../config/configuration";
+import { configuration } from "../../../config/configuration";
 import { hasPermission } from "../../../utils";
 
 export default (moduleName: string, permissionType: string) => (request, response, next) => {
@@ -11,7 +11,7 @@ export default (moduleName: string, permissionType: string) => (request, respons
 
   if (token) {
 // tslint:disable-next-line: no-shadowed-variable
-    jwt.verify(token, configure.tokenKey, (err, request) => {
+    jwt.verify(token, configuration.tokenKey, (err, request) => {
       if (err) {
         next ({ error : {
           error: "Token Not verified",
