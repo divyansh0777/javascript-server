@@ -1,19 +1,19 @@
-import * as mongoose from 'mongoose';
-import { configure } from '../configuration'
+import * as mongoose from "mongoose";
+import { configure } from "../configuration";
 
-class database {
+class Database {
   public open = () => {
     return new Promise((resolve, reject) => {
-      const url = configure.mongo_url;
+      const url = configure.mongoUrl;
 
       mongoose.connect(url, {useNewUrlParser: true});
 
-      mongoose.connection.on('connected', () => {
+      mongoose.connection.on("connected", () => {
         console.log("Database connected");
         resolve();
       });
 
-      mongoose.connection.on('error', () => {
+      mongoose.connection.on("error", () => {
         reject();
       });
     });
@@ -24,4 +24,4 @@ class database {
   }
 }
 
-export default new database()
+export default new Database();
