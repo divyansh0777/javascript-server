@@ -27,7 +27,7 @@ export default (moduleName: string, permissionType: string) => (request, respons
       }
     });
   } else {
-    response.send("Token is empty");
+    response.send("Bad Token");
   }
 };
 
