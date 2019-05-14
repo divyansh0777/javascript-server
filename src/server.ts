@@ -10,9 +10,9 @@ export default class {
   private PORT: number;
   private NODE_ENV: string;
 
-  constructor( configure ) {
-    this.PORT = configure.port;
-    this.NODE_ENV = configure.nodeEnv;
+  constructor( configuration ) {
+    this.PORT = configuration.port;
+    this.NODE_ENV = configuration.nodeEnv;
   }
 
   public bootstrap = () => {
