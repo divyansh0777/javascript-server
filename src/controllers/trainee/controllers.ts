@@ -10,14 +10,14 @@ class Controller {
   }
 
   public putRequest(request, response) {
-    response.send("This is a PUT request");
+    response.send("This is a PUT request inside from trainee Controller");
   }
 
   public deleteRequest(request, response) {
-    response.send("This is a DELETE request");
+    response.send("This is a DELETE request inside from trainee Controller");
   }
 
-  public postDataCheck(request, response, next) {
+  public postCheck(request, response) {
     const errors = validationResult(request);
 
     if (!errors.isEmpty()) {
@@ -29,5 +29,7 @@ class Controller {
   public postSchemaCheck(request, response, next) {
     response.status(200).json(request.body);
   }
+
 }
+
 export default new Controller();

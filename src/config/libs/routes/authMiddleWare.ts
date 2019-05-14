@@ -2,9 +2,10 @@ import * as jwt from "jsonwebtoken";
 import { configuration } from "../../../config/configuration";
 import { hasPermission } from "../../../utils";
 
-export const authMiddleWare = (moduleName, permissionType) => (request, response, next) => {
-  const token = request.header("authorization");
-  // if(token.startsWith("Bearer")){
+export default (moduleName: string, permissionType: string) => (request, response, next) => {
+
+  const token = request.header("Authorization");
+  // if (token.startsWith("Bearer")) {
   //   token = token.slice(7, token.length);
   // }
 
@@ -12,26 +13,21 @@ export const authMiddleWare = (moduleName, permissionType) => (request, response
 // tslint:disable-next-line: no-shadowed-variable
     jwt.verify(token, configuration.tokenKey, (err, request) => {
       if (err) {
-        next({ error : {
-          error: "Token Not Found",
-          message: "Token Not verified",
+        next ({ error : {
+          error: "Token Not verified",
+          message: "Enter valid token",
           status: 403
         }});
       } else {
         if (hasPermission(moduleName, request.role, permissionType)) {
           response.send("User Authenticated");
         } else {
-          next({ error : {
-            error: "Permission Denied",
-            message: "Role is not authenticated"
-          }});
+          response.status(403).json("User not Authenticate");
         }
       }
     });
   } else {
-    next({error: {
-      message: "You have entered wrong token or you left field"
-    }});
+    response.send("Token is empty");
   }
 };
 

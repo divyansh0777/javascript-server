@@ -11,6 +11,7 @@
     "@types/mongodb": "^3.1.26",
     "@types/mongoose": "^5.3.27",
     "@types/node": "^11.13.7",
+    "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
     "commitizen": "^3.1.1",
     "dotenv": "^7.0.0",

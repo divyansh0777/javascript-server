@@ -4,8 +4,9 @@ import Server from "./server";
 
 const serve = new Server(configuration);
 serve.bootstrap();
-Database.open().then(
-  serve.run
-).catch((err) => {
-  console.log("Database not connected");
-});
+startDb();
+
+async function startDb() {
+  await Database.open();
+  serve.run();
+}

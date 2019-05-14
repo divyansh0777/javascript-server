@@ -1,6 +1,7 @@
 import * as express from "express";
 import { check } from "express-validator/check";
-import { authMiddleWare } from "../.././config/libs/routes/authMiddleWare";
+import authMiddleWare from "../.././config/libs/routes/authMiddleWare";
+import * as constants from "../../utils/constants";
 import Schema from "../schema";
 import validator from "../validation";
 import traineeController from "./controllers";

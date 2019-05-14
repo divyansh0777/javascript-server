@@ -1,9 +1,11 @@
 import * as mongoose from "mongoose";
 
-const userSchema = mongoose.Schema;
+const UserSchema = mongoose.Schema;
 
-export default new userSchema({
+export default new UserSchema({
   age: Number,
   email: String,
-  name: String
+  name: String,
+  password: String,
+  role: String
 });

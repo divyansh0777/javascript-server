@@ -1,6 +1,8 @@
 export interface IConfig {
-  mongoUrl: string;
-  nodeEnv: string;
-  port: string;
-  tokenKey: any;
+  readonly mongoUrl: string;
+  readonly nodeEnv: string;
+  readonly port: string;
+  readonly saltPass: number;
+  readonly tokenKey: string;
+
 }

@@ -6,7 +6,11 @@ const validator = ( schema ) => {
       const errors = validationResult(req);
 
       if (!errors.isEmpty()) {
-        next({error: errors.array()});
+        next ({ error : {
+          error: "Validator",
+          message: "Enter valid details",
+          status: 403
+        }});
       }
       next();
     }
