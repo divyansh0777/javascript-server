@@ -5,8 +5,21 @@ class UserController {
 
   public signIn = async (request, response, next) => {
     const { email, password } = request.body;
-    const userFound = await UserRepositories.count({ email, password });
-    if (!userFound) {
+    try {
+      const userFound = await UserRepositories.count({email});
+      if ( userFound ) {
+        const compare = await UserRepositories.comparePassword({email, password });
+        if ( compare ) {
+// tslint:disable-next-line: no-shadowed-variable
+          const data = await UserRepositories.read({email});
+// tslint:disable-next-line: no-shadowed-variable
+          const token = jwt.sign({ data } , configuration.tokenKey, {
+          expiresIn: 86400
+          });
+          response.send(token);
+        }
+      }
+    } catch (error) {
       next ({ error: {
         error: "Credentials not matched",
         message: "Enter valid email and password",
