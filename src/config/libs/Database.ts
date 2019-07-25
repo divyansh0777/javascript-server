@@ -9,9 +9,10 @@ class Database {
 
       mongoose.connect(url, {useNewUrlParser: true});
 
-      mongoose.connection.on("connected", () => {
-        console.log("Database connected");
-        seedData();
+      mongoose.connection.on("connected", async () => {
+        console.log("Database connecting.......");
+        await seedData();
+        console.log("Database connected !");
         resolve();
       });
 

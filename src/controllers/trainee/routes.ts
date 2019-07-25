@@ -1,8 +1,8 @@
 import * as express from "express";
-import { check } from "express-validator/check";
+import { body, check, checkSchema } from "express-validator/check";
+import { sanitize, sanitizeBody } from "express-validator/filter";
 import authMiddleWare from "../.././config/libs/routes/authMiddleWare";
 import * as constants from "../../utils/constants";
-import Schema from "../schema";
 import validator from "../validation";
 import traineeController from "./controllers";
 
@@ -16,8 +16,17 @@ traineeRouter.put("/", traineeController.putRequest);
 traineeRouter.delete("/", traineeController.deleteRequest);
 traineeRouter.post("/", traineeController.postRequest);
 
-traineeRouter.post("/schema", validator(Schema.post), traineeController.postSchemaCheck);
+traineeRouter.post("/schema", [ sanitize("id").toInt() ], validator, traineeController.postSchemaCheck);
 
-traineeRouter.post("/token", authMiddleWare("getUsers", "read"));
+// traineeRouter.post("/schema", checkSchema({
+//   id: {
+//     errorMessage: "ID is wrong",
+//     in: ["body"],
+//     isInt: true,
+//     toInt: true,
+//   }
+// }), traineeController.postSchemaCheck);
+
+traineeRouter.get("/token", authMiddleWare("getUsers", "read"));
 
 export default traineeRouter;
