@@ -29,6 +29,11 @@ export default class VersionableRepository {
     return result;
   }
 
+  public async getPassword(query) {
+    const result = await this.Model.find(query, {password: 1});
+    return result;
+  }
+
   public async updateRole(query, update) {
     console.log(update);
     const found = await this.Model.find(query, { role: 1});

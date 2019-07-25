@@ -7,42 +7,7 @@ export const seedData = async () => {
       age: 23,
       email: "divyansh01@successive.tech",
       name: "Divyansh Mishra",
-      password: "divyansh01",
-      role: "trainee"
-    },
-    {
-      age: 23,
-      email: "anshul02@successive.tech",
-      name: "Anshul Shrivastava",
-      password: "anshul02",
-      role: "head-trainer"
-    },
-    {
-      age: 23,
-      email: "saksham03@successive.tech",
-      name: "Saksham Sijariya",
-      password: await UserRepositories.encryptPass("saksham03"),
-      role: "trainer"
-    },
-    {
-      age: 23,
-      email: "viplav04@successive.tech",
-      name: "Viplav Gupta",
-      password: await UserRepositories.encryptPass("viplav04"),
-      role: "trainer"
-    },
-    {
-      age: 23,
-      email: "shashank05@successive.tech",
-      name: "Shashank Gupta",
-      password: await UserRepositories.encryptPass("shashank05"),
-      role: "trainee"
-    },
-    {
-      age: 23,
-      email: "sahil06@successive.tech",
-      name: "Sahil khan",
-      password: await UserRepositories.encryptPass("sahil06"),
+      password: await UserRepositories.encryptPass("divyansh01"),
       role: "trainee"
     },
   ];

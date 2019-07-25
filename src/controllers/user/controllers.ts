@@ -1,3 +1,4 @@
+import * as bcrypt from "bcrypt";
 import * as jwt from "jsonwebtoken";
 import { configuration } from "../../config/configuration";
 import UserRepositories from "../../repositories/user/UserRepositories";
@@ -5,8 +6,10 @@ class UserController {
 
   public signIn = async (request, response, next) => {
     const { email, password } = request.body;
-    const userFound = await UserRepositories.count({ email, password });
-    if (!userFound) {
+    const dataCompare = await UserRepositories.getPassword({ email });
+    const comparePassword = await bcrypt.compare(password, dataCompare[0].password);
+    const userFound = await UserRepositories.count({ email, dataCompare });
+    if (!userFound && !comparePassword) {
       next ({ error: {
         error: "Credentials not matched",
         message: "Enter valid email and password",
@@ -17,7 +20,7 @@ class UserController {
     const token = jwt.sign({ data } , configuration.tokenKey, {
       expiresIn: 86400
     });
-    response.send(token);
+    response.send({token});
   }
 
 /*-------------*/
@@ -43,13 +46,11 @@ class UserController {
 
   public create = async (request, response, next) => {
     try {
-
     const { age, email, name, password, role } = request.body;
     const encryptPass =  await UserRepositories.encryptPass(password);
     const data = { age, email, name, password: encryptPass, role };
     const result = await UserRepositories.create(data);
     response.send("User signed Up");
-
     } catch (error) {
       next({error: {
         error: "User not signed up"
