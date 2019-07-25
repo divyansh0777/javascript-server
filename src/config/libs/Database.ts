@@ -7,7 +7,7 @@ class Database {
     return new Promise((resolve, reject) => {
       const url = configuration.mongoUrl;
 
-      mongoose.connect(url, {useNewUrlParser: true});
+      mongoose.connect(url, {useNewUrlParser: true, useCreateIndex: true });
 
       mongoose.connection.on("connected", async () => {
         console.log("Database connecting.......");
@@ -22,8 +22,8 @@ class Database {
     });
   }
 
-  public disconnect = () => {
-    mongoose.disconnect();
+  public disconnect = async () => {
+    await mongoose.disconnect();
   }
 }
 

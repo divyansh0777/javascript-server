@@ -1,6 +1,6 @@
-import { IUserModel } from "../user/IUserModel";
+import * as mongoose from "mongoose";
 
-export interface IVersionableModel extends IUserModel {
+export interface IVersionableModel extends mongoose.Document {
   createdAt: any;
   modifiedAt: any;
 }
