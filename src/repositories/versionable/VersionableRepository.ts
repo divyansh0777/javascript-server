@@ -25,7 +25,7 @@ export default class VersionableRepository {
   }
 
   public async read(query: any = {}) {
-    const result = await this.Model.find(query, {password: 0});
+    const result = await this.Model.find(query, {password: 0, _id: 0});
     return result;
   }
 
