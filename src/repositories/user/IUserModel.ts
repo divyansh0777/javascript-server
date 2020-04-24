@@ -4,6 +4,7 @@ export interface IUserModel extends IVersionableModel {
   _id: ObjectId;
   age: number;
   email: string;
+  image: any;
   name: string;
   password: string;
   role: string;

@@ -45,6 +45,11 @@ class UserRepositories extends VersionableRepository {
     return result;
   }
 
+  public async getUsersList(query: any = {}) {
+    const result = await UserModel.find(query);
+    return result;
+  }
+
 }
 
 export default new UserRepositories(UserModel);

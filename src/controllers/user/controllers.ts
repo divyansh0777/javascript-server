@@ -42,6 +42,11 @@ class UserController {
     });
   }
 
+  public getUsers = async (request, response, next) => {
+    const result = await UserRepositories.getUsersList();
+    response.send(result);
+  }
+
 /*-------------*/
 
   public create = async (request, response, next) => {
